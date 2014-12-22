@@ -14,7 +14,8 @@
         "symfony/dependency-injection": "^2.6.2@dev",
         "symfony/expression-language": "~2.6",
         "symfony/http-kernel": "~2.3",
-        "symfony/config": "~2.3"
+        "symfony/config": "~2.3",
+        "symfony/yaml": "~2.0"
     },
     "autoload": {
         "psr-4": { "Incenteev\\DynamicParametersBundle\\": "src" }

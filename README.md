@@ -50,9 +50,22 @@ incenteev_dynamic_parameters:
         "database.name": DATABASE_NAME
 ```
 
+Environment variables are always strings. To be able to set parameters of other types, the bundle supports parsing the environment variable as inline Yaml:
+
+
+```yaml
+# app/config/config.yml
+incenteev_dynamic_parameters:
+    parameters:
+        use_ssl:
+            variable: HAS_SSL
+            yaml: true
+```
+
+### ParameterHandler integration
+
 If you are using the [env-map feature of the Incenteev ParameterHandler](https://github.com/Incenteev/ParameterHandler/#using-environment-variables-to-set-the-parameters),
 you can import the whole env-map very easily:
-
 
 ```yaml
 # app/config/config.yml
@@ -60,6 +73,19 @@ incenteev_dynamic_parameters:
     import_parameter_handler_map: true
     parameters:
         something_else: NOT_IN_THE_COMPOSER_JSON
+```
+
+The ParameterHandler parses the environment variables as inline Yaml, so the Yaml parsing is automatically enabled for these variables when importing the map.
+
+> Note: Any parameter defined explicitly will win over the imported map.
+
+By default, the bundle will look for the composer.json file in ``%kernel.root_dir%/../composer.json``. If you use a non-standard location for your kernel, you can change the path to your composer.json file to read the env-map:
+
+```yaml
+# app/config/config.yml
+incenteev_dynamic_parameters:
+    import_parameter_handler_map: true
+    composer_file: path/to/composer.json
 ```
 
 ## Limitations

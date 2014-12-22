@@ -22,8 +22,9 @@ class ParameterReplacementPass implements CompilerPassInterface
             return;
         }
 
-        foreach ($container->getParameter('incenteev_dynamic_parameters.parameters') as $name => $envVar) {
-            $this->parameterExpressions[$name] = sprintf('dynamic_parameter(%s, %s)', var_export($name, true), var_export($envVar, true));
+        foreach ($container->getParameter('incenteev_dynamic_parameters.parameters') as $name => $paramConfig) {
+            $function = $paramConfig['yaml'] ? 'dynamic_yaml_parameter' : 'dynamic_parameter';
+            $this->parameterExpressions[$name] = sprintf('%s(%s, %s)', $function, var_export($name, true), var_export($paramConfig['variable'], true));
         }
 
         // TODO handle parameters concatenating another parameter with something else

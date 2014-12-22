@@ -14,7 +14,7 @@ class ParameterReplacementPassTest extends \PHPUnit_Framework_TestCase
 
         $container->setParameter('foo', 'bar');
         $container->setParameter('bar', 'baz');
-        $container->setParameter('incenteev_dynamic_parameters.parameters', array('foo' => 'SYMFONY_FOO'));
+        $container->setParameter('incenteev_dynamic_parameters.parameters', array('foo' => array('variable' => 'SYMFONY_FOO', 'yaml' => false)));
 
         $container->register('srv.foo', 'stClass')
             ->setProperty('test', '%foo%')
@@ -42,5 +42,25 @@ class ParameterReplacementPassTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('Symfony\Component\ExpressionLanguage\Expression', $calls[1][1][0], 'Parameter instances are replaced in arguments');
         $this->assertEquals('dynamic_parameter(\'foo\', \'SYMFONY_FOO\')', (string) $calls[1][1][0]);
+    }
+
+    public function testReplaceYamlParameter()
+    {
+        $container = new ContainerBuilder();
+
+        $container->setParameter('foo', 'bar');
+        $container->setParameter('incenteev_dynamic_parameters.parameters', array('foo' => array('variable' => 'SYMFONY_FOO', 'yaml' => true)));
+
+        $container->register('srv.foo', 'stClass')
+            ->setProperty('test', '%foo%');
+
+        $pass = new ParameterReplacementPass();
+        $pass->process($container);
+
+        $def = $container->getDefinition('srv.foo');
+        $props = $def->getProperties();
+
+        $this->assertInstanceOf('Symfony\Component\ExpressionLanguage\Expression', $props['test'], 'Parameters are replaced in properties');
+        $this->assertEquals('dynamic_yaml_parameter(\'foo\', \'SYMFONY_FOO\')', (string) $props['test']);
     }
 }

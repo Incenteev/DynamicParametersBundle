@@ -32,7 +32,12 @@ class IncenteevDynamicParametersExtensionTest extends \PHPUnit_Framework_TestCas
 
         $extension->load(array($config), $container);
 
+        $expected = array(
+            'foo' => array('variable' => 'FOO', 'yaml' => false),
+            'bar' => array('variable' => 'SYMFONY__BAR', 'yaml' => false),
+        );
+
         $this->assertTrue($container->hasParameter('incenteev_dynamic_parameters.parameters'));
-        $this->assertSame(array('foo' => 'FOO', 'bar' => 'SYMFONY__BAR'), $container->getParameter('incenteev_dynamic_parameters.parameters'));
+        $this->assertSame($expected, $container->getParameter('incenteev_dynamic_parameters.parameters'));
     }
 }
