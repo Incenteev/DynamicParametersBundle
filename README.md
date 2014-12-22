@@ -3,6 +3,9 @@
 This bundle provides you a few CLI commands to check your translations.
 
 [![Build Status](https://travis-ci.org/Incenteev/DynamicParametersBundle.svg?branch=master)](https://travis-ci.org/Incenteev/DynamicParametersBundle)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Incenteev/DynamicParametersBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Incenteev/DynamicParametersBundle/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/Incenteev/DynamicParametersBundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Incenteev/DynamicParametersBundle/?branch=master)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/2e97bd6b-7ae8-41d1-b0a7-a3106f21c50d/mini.png)](https://insight.sensiolabs.com/projects/2e97bd6b-7ae8-41d1-b0a7-a3106f21c50d)
 [![Latest Stable Version](https://poser.pugx.org/incenteev/dynamic-parameters-bundle/v/stable.svg)](https://packagist.org/packages/incenteev/dynamic-parameters-bundle)
 [![Latest Unstable Version](https://poser.pugx.org/incenteev/dynamic-parameters-bundle/v/unstable.svg)](https://packagist.org/packages/incenteev/dynamic-parameters-bundle)
 [![License](https://poser.pugx.org/incenteev/dynamic-parameters-bundle/license.svg)](https://packagist.org/packages/incenteev/dynamic-parameters-bundle)
