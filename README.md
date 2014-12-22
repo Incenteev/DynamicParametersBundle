@@ -61,3 +61,8 @@ incenteev_dynamic_parameters:
     parameters:
         something_else: NOT_IN_THE_COMPOSER_JSON
 ```
+
+## Limitations
+
+- Getting a parameter from the container directly at runtime will not use the environment variable
+- Parameters or arguments built by concatenating other parameters together will not rely on the environment variables (yet)
