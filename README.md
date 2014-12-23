@@ -1,6 +1,6 @@
 # DynamicParametersBundle
 
-This bundle provides you a few CLI commands to check your translations.
+This bundle provides a way to read parameters from environment variables at runtime.
 
 [![Build Status](https://travis-ci.org/Incenteev/DynamicParametersBundle.svg?branch=master)](https://travis-ci.org/Incenteev/DynamicParametersBundle)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Incenteev/DynamicParametersBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Incenteev/DynamicParametersBundle/?branch=master)
