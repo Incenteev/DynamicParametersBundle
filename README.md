@@ -1,6 +1,7 @@
 # DynamicParametersBundle
 
 This bundle provides a way to read parameters from environment variables at runtime.
+The value defined in the container parameter is used as fallback when the environment variable is not available.
 
 [![Build Status](https://travis-ci.org/Incenteev/DynamicParametersBundle.svg?branch=master)](https://travis-ci.org/Incenteev/DynamicParametersBundle)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Incenteev/DynamicParametersBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Incenteev/DynamicParametersBundle/?branch=master)
@@ -55,7 +56,6 @@ incenteev_dynamic_parameters:
 
 Environment variables are always strings. To be able to set parameters of other types, the bundle supports parsing the environment variable as inline Yaml:
 
-
 ```yaml
 # app/config/config.yml
 incenteev_dynamic_parameters:
@@ -89,6 +89,14 @@ By default, the bundle will look for the composer.json file in ``%kernel.root_di
 incenteev_dynamic_parameters:
     import_parameter_handler_map: true
     composer_file: path/to/composer.json
+```
+
+### Retrieving parameters at runtime
+
+The bundle taks care of service arguments, but changing the behavior of ``$container->getParameter()`` is not possible. However, it exposes a service to get parameters taking the environment variables into account.
+
+```php
+$this->get('incenteev_dynamic_parameters.retriever')->get('use_ssl');
 ```
 
 ## Limitations

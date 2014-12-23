@@ -16,6 +16,8 @@ class IncenteevDynamicParametersExtensionTest extends \PHPUnit_Framework_TestCas
 
         $this->assertTrue($container->hasParameter('incenteev_dynamic_parameters.parameters'));
         $this->assertSame(array(), $container->getParameter('incenteev_dynamic_parameters.parameters'));
+
+        $this->assertTrue($container->hasDefinition('incenteev_dynamic_parameters.retriever'));
     }
 
     public function testLoadParameters()
