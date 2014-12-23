@@ -27,8 +27,6 @@ class ParameterReplacementPass implements CompilerPassInterface
             $this->parameterExpressions[$name] = sprintf('%s(%s, %s)', $function, var_export($name, true), var_export($paramConfig['variable'], true));
         }
 
-        // TODO handle parameters concatenating another parameter with something else
-
         $this->visitedDefinitions = new \SplObjectStorage();
 
         foreach ($container->getDefinitions() as $definition) {
@@ -95,8 +93,6 @@ class ParameterReplacementPass implements CompilerPassInterface
 
                 continue;
             }
-
-            // TODO handle arguments concatenating a parameter with something else
         }
 
         return $values;
