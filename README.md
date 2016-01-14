@@ -93,7 +93,7 @@ incenteev_dynamic_parameters:
 
 ### Retrieving parameters at runtime
 
-The bundle taks care of service arguments, but changing the behavior of ``$container->getParameter()`` is not possible. However, it exposes a service to get parameters taking the environment variables into account.
+The bundle takes care of service arguments, but changing the behavior of ``$container->getParameter()`` is not possible. However, it exposes a service to get parameters taking the environment variables into account.
 
 ```php
 $this->get('incenteev_dynamic_parameters.retriever')->get('use_ssl');
